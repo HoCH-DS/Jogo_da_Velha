@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_Jogo">
+
+
+    <fragment
+        android:id="@+id/fragment_Inicio"
+        android:name="com.example.jogo_da_velha.fragment.Fragment_Inicio"
+        android:label="fragment__inicio"
+        tools:layout="@layout/fragment__inicio" >
+        <action
+            android:id="@+id/action_fragment_Inicio_to_fragment_Jogo"
+            app:destination="@id/fragment_Jogo" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_Jogo"
+        android:name="com.example.jogo_da_velha.fragment.Fragment_Jogo"
+        android:label="O Jogo da Veia"
+        tools:layout="@layout/fragment__jogo" >
+        <action
+            android:id="@+id/action_fragment_Jogo_to_fragment_Inicio"
+            app:destination="@id/fragment_Inicio" />
+        <action
+            android:id="@+id/action_fragment_Jogo_to_pref_Fragment"
+            app:destination="@id/pref_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pref_Fragment"
+        android:name="com.example.jogo_da_velha.fragment.Pref_Fragment"
+        android:label="fragment_pref_"
+        tools:layout="@layout/fragment_pref_" />
+</navigation>

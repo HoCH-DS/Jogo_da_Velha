@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.Fragment_Jogo">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <TextView
+        android:id="@+id/Jogador_O"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:background="@color/pink_700"
+        android:text="Jogador 1 ( O )"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.035"
+
+    />
+
+
+    <TextView
+        android:id="@+id/Placar_jog1"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:background="@color/pink_700"
+        android:text="( 0 )"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.927"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.035" />
+
+    <TextView
+        android:id="@+id/Joagador_X"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_500"
+        android:text="Jogador 2 ( X )"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.085"
+
+        />
+
+    <TextView
+        android:id="@+id/Placar_jog2"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:background="@color/blue_500"
+        android:text="( 0 )"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.927"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.085" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/Joagador_X"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+
+            >
+            <Button
+                android:id="@+id/btn00"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1">
+
+            </Button>
+            <Button
+                android:id="@+id/btn01"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1">
+
+            </Button>
+            <Button
+                android:id="@+id/btn02"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1">
+
+            </Button>
+        </TableRow>
+
+
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:weightSum="3"
+
+
+            >
+            <Button
+                android:id="@+id/btn10"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1">
+
+            </Button>
+            <Button
+                android:id="@+id/btn11"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1">
+
+            </Button>
+            <Button
+                android:id="@+id/btn12"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1">
+
+            </Button>
+        </TableRow>
+
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:weightSum="3"
+
+
+            >
+            <Button
+                android:id="@+id/btn20"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1">
+
+            </Button>
+            <Button
+                android:id="@+id/btn21"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1">
+
+            </Button>
+            <Button
+                android:id="@+id/btn22"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="150dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1">
+
+            </Button>
+        </TableRow>
+
+
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
