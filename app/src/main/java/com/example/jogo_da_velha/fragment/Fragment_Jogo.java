@@ -13,11 +13,24 @@ import android.widget.Button;
 import com.example.jogo_da_velha.R;
 import com.example.jogo_da_velha.databinding.FragmentJogoBinding;
 
+import java.util.Random;
+
 
 public class Fragment_Jogo extends Fragment {
     private FragmentJogoBinding binding;
+
     //vetor para agrupar os botoes
     private Button[] botoes;
+
+    //variavel que representa o tabuleiro
+    private String[][] tabuleiro;
+
+    //variavel para os simbolos
+    private String simbJog1, simbJog2, simbolo;
+
+    //variavel Random para sortear o jogador
+    private Random random;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,9 +61,28 @@ public class Fragment_Jogo extends Fragment {
         for (Button btn : botoes){
             btn.setOnClickListener(ListenerBotoes);
         }
+        //
+        tabuleiro = new String[3][3];
+
+        //
+        random = new Random();
+
+        simbJog1 = "X";
+        simbJog2 = "O";
+
+        //sortea que inicia o jogo
+        sorteia();
 
         return binding.getRoot();
 
+    }
+
+    private void sorteia(){
+        if (random.nextBoolean()){
+            simbolo = simbJog1;
+        }else{
+            simbolo = simbJog2;
+        }
     }
 
     private View.OnClickListener ListenerBotoes = btPress -> {
@@ -61,7 +93,15 @@ public class Fragment_Jogo extends Fragment {
         //estrai a posicao em linha e coluna
         int linha = Character.getNumericValue(posicao.charAt(0));
         int coluna = Character.getNumericValue(posicao.charAt(1));
-
-
+        //marca no tabuleiro o simbolo que foi jogar
+        tabuleiro[linha][coluna] = simbolo;
+        //trocar o texto do botao que foi clicado
+        Button botao = (Button) btPress;
+        //troca o texto do botao que foi clicado
+        botao.setText(simbolo);
     };
+
+    public Button[] getBotoes() {
+        return botoes;
+    }
 }

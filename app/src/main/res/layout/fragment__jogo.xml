@@ -101,6 +101,7 @@
             >
             <Button
                 android:id="@+id/btn00"
+                android:textSize="50sp"
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_height="150dp"
@@ -110,6 +111,7 @@
             </Button>
             <Button
                 android:id="@+id/btn01"
+                android:textSize="50sp"
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_height="150dp"
@@ -119,6 +121,7 @@
             </Button>
             <Button
                 android:id="@+id/btn02"
+                android:textSize="50sp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="5dp"
                 android:layout_height="150dp"
@@ -138,6 +141,7 @@
             >
             <Button
                 android:id="@+id/btn10"
+                android:textSize="50sp"
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_height="150dp"
@@ -147,6 +151,7 @@
             </Button>
             <Button
                 android:id="@+id/btn11"
+                android:textSize="50sp"
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_height="150dp"
@@ -156,6 +161,7 @@
             </Button>
             <Button
                 android:id="@+id/btn12"
+                android:textSize="50sp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="5dp"
                 android:layout_height="150dp"
@@ -174,6 +180,7 @@
             >
             <Button
                 android:id="@+id/btn20"
+                android:textSize="50sp"
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_height="150dp"
@@ -183,6 +190,7 @@
             </Button>
             <Button
                 android:id="@+id/btn21"
+                android:textSize="50sp"
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_height="150dp"
@@ -192,6 +200,7 @@
             </Button>
             <Button
                 android:id="@+id/btn22"
+                android:textSize="50sp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="5dp"
                 android:layout_height="150dp"
