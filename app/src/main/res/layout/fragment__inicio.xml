@@ -9,6 +9,31 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="Jogo Da Veia"
+        android:textColor="@color/pink_700"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+
+
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/veia" />
+
+    <Button
+        android:id="@+id/bnt_jogar"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginLeft="80dp"
+        android:text="Jogar"
+        android:textSize="18dp"
+
+
+        />
 
 </FrameLayout>

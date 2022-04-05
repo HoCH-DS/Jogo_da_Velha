@@ -8,5 +8,6 @@
     <string name="resetar">Zera o placar</string>
     <string name="tela_inicial">Voltar á tela inicial</string>
     <string name="preferencias">Preferencias</string>
-
+    <string name="jog1">Jogador 1 (%1$s)</string>
+    <string name="jog2">Jogador 2 (%1$s)</string>
 </resources>

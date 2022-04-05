@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/fragment_Jogo">
-    
+
     <fragment
         android:id="@+id/fragment_Inicio"
         android:name="com.example.jogo_da_velha.fragment.Fragment_Inicio"

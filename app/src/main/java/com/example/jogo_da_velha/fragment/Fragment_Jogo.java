@@ -116,6 +116,10 @@ public class Fragment_Jogo extends Fragment {
         simbJog1 = PrefsUtil.getsimboloJo1(getContext());
         simbJog2 = PrefsUtil.getsimboloJo2(getContext());
 
+        //alterar os simbolo no jogador no placar
+        binding.JoagadorX.setText(getResources().getString(R.string.jog1, simbJog1));
+        binding.JogadorO.setText(getResources().getString(R.string.jog2, simbJog2));
+
         //sortea quem inicia o jogo
         sorteia();
 
