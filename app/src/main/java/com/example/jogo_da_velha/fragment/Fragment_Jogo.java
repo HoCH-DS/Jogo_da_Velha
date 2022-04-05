@@ -3,10 +3,15 @@ package com.example.jogo_da_velha.fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -14,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.jogo_da_velha.R;
 import com.example.jogo_da_velha.databinding.FragmentJogoBinding;
+import com.example.jogo_da_velha.util.PrefsUtil;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -37,6 +43,8 @@ public class Fragment_Jogo extends Fragment {
     //variavel para contar o numero de jogadas
     private int numJogadas = 0;
 
+    //variaveis para o placar
+    private int placarJog1 = 0, placarJog2 = 0;
 
 
     @Override
@@ -46,8 +54,32 @@ public class Fragment_Jogo extends Fragment {
     }
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        //verifica qual botao foi clicado no menu
+        switch (item.getItemId()){
+            //caso tenha clicado no resetar
+            case R.id.menu_resetar:
+                placarJog1 = 0;
+                placarJog2 = 0;
+                resetar();
+                atualizarPlacar();
+                break;
+            //caso tenha clicado no preference
+            case R.id.menu_pref:
+                NavHostFragment.findNavController(Fragment_Jogo.this).navigate(R.id.action_fragment_Jogo_to_pref_Fragment);
+                break;
+        }
+
+
+        return true;
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // habilita o menu neste fragment
+        setHasOptionsMenu(true);
+
         // Inflate the layout for this fragment
         binding = FragmentJogoBinding .inflate(inflater, container , false);
 
@@ -77,15 +109,20 @@ public class Fragment_Jogo extends Fragment {
             Arrays.fill(vetor, "");
         }
 
-        //
+        //intancia o Random
         random = new Random();
 
-        simbJog1 = "X";
-        simbJog2 = "O";
+        //define os simbolos dos jogadores
+        simbJog1 = PrefsUtil.getsimboloJo1(getContext());
+        simbJog2 = PrefsUtil.getsimboloJo2(getContext());
 
-        //sortea que inicia o jogo
+        //sortea quem inicia o jogo
         sorteia();
 
+        //atualiza a vez
+        atualizaVez();
+
+        //retorna a view do fragment
         return binding.getRoot();
 
     }
@@ -143,6 +180,18 @@ public class Fragment_Jogo extends Fragment {
 
     }
 
+    private void atualizarPlacar(){
+        binding.PlacarJog1.setText(placarJog1+"");
+        binding.PlacarJog2.setText(placarJog2+"");
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_main, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+
+    }
+
     private View.OnClickListener ListenerBotoes = btPress -> {
         //incrementa o numero de jogadas
         numJogadas++;
@@ -175,6 +224,14 @@ public class Fragment_Jogo extends Fragment {
         //verifica se venceu
         if(numJogadas >= 5 && venceu()){
             Toast.makeText(getContext(),R.string.venceu, Toast.LENGTH_SHORT).show();
+
+            if (simbolo.equals(simbJog1)){
+                placarJog1++;
+            }else {
+                placarJog2++;
+            }
+            // atualiza o placar
+            atualizarPlacar();
             //chama o metodo resetar
             resetar();
 
@@ -188,12 +245,18 @@ public class Fragment_Jogo extends Fragment {
             simbolo = simbolo.equals(simbJog1) ? simbJog2 :simbJog1;
             //chama o metodo
             atualizaVez();
+
         }
 
     };
 
     //metodo para resetar
     private void resetar(){
+
+        for(String[] vetor :tabuleiro){
+            Arrays.fill(vetor, "");
+        }
+
         for (int i = 0; i < botoes.length; i++){
             botoes[i].setText("");
             //desabilitar o botao
