@@ -1,9 +1,12 @@
 package com.example.jogo_da_velha.fragment;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -18,9 +21,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.jogo_da_velha.R;
+import com.example.jogo_da_velha.activity.MainActivity;
 import com.example.jogo_da_velha.databinding.FragmentJogoBinding;
 import com.example.jogo_da_velha.util.PrefsUtil;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -44,7 +49,10 @@ public class Fragment_Jogo extends Fragment {
     private int numJogadas = 0;
 
     //variaveis para o placar
-    private int placarJog1 = 0, placarJog2 = 0;
+    private int placarJog1 = 0, placarJog2 = 0 , placarVelha = 0;
+
+    //Alert Dialog
+    private AlertDialog alerta;
 
 
     @Override
@@ -59,17 +67,18 @@ public class Fragment_Jogo extends Fragment {
         switch (item.getItemId()){
             //caso tenha clicado no resetar
             case R.id.menu_resetar:
-                placarJog1 = 0;
-                placarJog2 = 0;
-                resetar();
-                atualizarPlacar();
+                //chama o metodo de Alert Reset
+                alerta.show();
+
                 break;
             //caso tenha clicado no preference
             case R.id.menu_pref:
                 NavHostFragment.findNavController(Fragment_Jogo.this).navigate(R.id.action_fragment_Jogo_to_pref_Fragment);
                 break;
+            case R.id.menu_inicio:
+                NavHostFragment.findNavController(Fragment_Jogo.this).navigate((R.id.action_fragment_Jogo_to_fragment_Inicio));
+                break;
         }
-
 
         return true;
     }
@@ -77,6 +86,35 @@ public class Fragment_Jogo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+            //Cria o gerador do AlertDialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
+            //define o titulo
+            builder.setTitle("Resetar");
+            //define a mensagem
+            builder.setMessage("Deseja resetar o placar ");
+            //define um botão como positivo
+            builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface arg0, int arg1) {
+                    Toast.makeText(getActivity(), "positivo=" + arg1, Toast.LENGTH_SHORT).show();
+                    placarJog1 = 0;
+                    placarJog2 = 0;
+                    placarVelha = 0;
+                    resetar();
+                    atualizarPlacar();
+
+                }
+            });
+            //define um botão como negativo.
+            builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface arg0, int arg1) {
+                    Toast.makeText(getActivity(), "negativo=" + arg1, Toast.LENGTH_SHORT).show();
+                }
+            });
+            //cria o AlertDialog
+            alerta = builder.create();
+
+
         // habilita o menu neste fragment
         setHasOptionsMenu(true);
 
@@ -187,6 +225,8 @@ public class Fragment_Jogo extends Fragment {
     private void atualizarPlacar(){
         binding.PlacarJog1.setText(placarJog1+"");
         binding.PlacarJog2.setText(placarJog2+"");
+        binding.placarVelha.setText(placarVelha+"");
+
     }
 
     @Override
@@ -242,6 +282,10 @@ public class Fragment_Jogo extends Fragment {
         }else if(numJogadas == 9){
             //verifica se deu velha
             Toast.makeText(getContext(),R.string.velha, Toast.LENGTH_SHORT).show();
+            //conta a quantidade de velhas
+            placarVelha++;
+            // atualiza o placar
+            atualizarPlacar();
             //chama o metodo resetar
             resetar();
         }else{
@@ -277,4 +321,20 @@ public class Fragment_Jogo extends Fragment {
     public Button[] getBotoes() {
         return botoes;
     }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // para "retirar" a toolbar
+        //pegar uma referencia do tipo AppCompatActivity
+        AppCompatActivity minhaActivity = (AppCompatActivity) getActivity();
+        //ocultar a actionBar
+        minhaActivity.getSupportActionBar().show();
+        //retira o botão de voltar da activity bar
+        minhaActivity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
+    }
+
+
 }

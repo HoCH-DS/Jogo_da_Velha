@@ -5,7 +5,6 @@ import androidx.preference.PreferenceFragmentCompat;
 import com.example.jogo_da_velha.R;
 
 
-
 public class Pref_Fragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
