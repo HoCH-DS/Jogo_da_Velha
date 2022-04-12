@@ -96,7 +96,6 @@ public class Fragment_Jogo extends Fragment {
             //define um botão como positivo
             builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface arg0, int arg1) {
-                    Toast.makeText(getActivity(), "positivo=" + arg1, Toast.LENGTH_SHORT).show();
                     placarJog1 = 0;
                     placarJog2 = 0;
                     placarVelha = 0;
@@ -108,7 +107,6 @@ public class Fragment_Jogo extends Fragment {
             //define um botão como negativo.
             builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface arg0, int arg1) {
-                    Toast.makeText(getActivity(), "negativo=" + arg1, Toast.LENGTH_SHORT).show();
                 }
             });
             //cria o AlertDialog
@@ -223,8 +221,8 @@ public class Fragment_Jogo extends Fragment {
     }
 
     private void atualizarPlacar(){
-        binding.PlacarJog1.setText(placarJog1+"");
-        binding.PlacarJog2.setText(placarJog2+"");
+        binding.PlacarJog1.setText(placarJog2+"");
+        binding.PlacarJog2.setText(placarJog1+"");
         binding.placarVelha.setText(placarVelha+"");
 
     }
